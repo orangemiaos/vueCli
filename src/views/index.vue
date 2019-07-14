@@ -1,9 +1,9 @@
 <template>
   <div>
     <Menu mode="horizontal" theme="primary" :active-name="activeName" @on-select="topMenuSelect" accordion>
-      <MenuItem :key="item.name" :name="item.name" v-for="item in topRouterList"
-                :class="{active:item.name == activeName}">
-        {{item.title}}
+      <MenuItem :key="item.index" :name="item.index" v-for="item in topRouterList"
+                :class="{active:activeName==item.index}">
+        {{item.menuTitle}}
       </MenuItem>
     </Menu>
     <div class="box">
@@ -40,23 +40,24 @@
     methods: {
       topMenuSelect(val) {
         this.activeName = val;
-        let route = this.topRouterList.find(e => {
-          return e.name == val;
-        });
-        if (route) {
-          this.sideRouterList = route.children;
-        } else {
-          this.sideRouterList = [];
-        }
-        //没有实际作用，但是切换top的标签时，路由需要改变
-        this.$router.push({name: val});
+        // let route = this.topRouterList.find(e => {
+        //   return e.name == val;
+        // });
+        // if (route) {
+        //   this.sideRouterList = route.children;
+        // } else {
+        //   this.sideRouterList = [];
+        // }
+        // //没有实际作用，但是切换top的标签时，路由需要改变
+        // this.$router.push({name: val});
       },
       sideMenuSelect(val) {
         this.$router.push({name: val});
       }
     },
     created() {
-      this.topRouterList = router.options.routes[0].children;
+      this.topRouterList = this.$store.state;
+      // this.topRouterList = router.options.routes[0].children;
     }
   }
 </script>
