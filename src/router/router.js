@@ -1,12 +1,12 @@
-import index from '@/views/index';
-import common from '@/views/common';
-import name1 from '@/views/components/name1';
-import name2 from '@/views/components/name2';
-import name3 from '@/views/components/name3';
-import name11 from '@/views/components/name11';
-import name12 from '@/views/components/name12';
-import name13 from '@/views/components/name13';
-import name21 from '@/views/components/name21';
+import index from '@import/index';
+import common from '@import/common';
+import name1 from '@importCom/name1';
+import name2 from '@importCom/name2';
+import name3 from '@importCom/name3';
+import name11 from '@importCom/name11';
+import name12 from '@importCom/name12';
+import name13 from '@importCom/name13';
+import name21 from '@importCom/name21';
 
 
 export const routes = [
