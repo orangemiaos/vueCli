@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import routerList from "@/router/router.js";
+  import {router} from "@/router/index";
 
   export default {
     name: "index",
@@ -56,7 +56,7 @@
       }
     },
     created() {
-      this.topRouterList = routerList.options.routes[0].children;
+      this.topRouterList = router.options.routes[0].children;
     }
   }
 </script>
