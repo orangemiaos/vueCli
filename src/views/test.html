@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<iframe v-drag src="https://sugar.baidubce.com/report/r_1013e-1kzjhwj5-1jq37k/d1c49df8eadf0b96d295408309e5b822"
+        style="border:none" width="1000" id="sugar-report"></iframe>
+
+<script>
+  window.addEventListener('message', (e) => {
+    let height = e.data.height;
+    document.getElementById('sugar-report').style.height = height + 'px';
+  })
+</script>
+</body>
+</html>
