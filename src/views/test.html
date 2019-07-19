@@ -4,21 +4,18 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <style type="text/css">
-    #box {
-      width: 200px;
-      height: 100px;
-      cursor: move;
+    body{
+      background-color: #ccc;
+    }
+    #drapBox {
+      width: 800px;
+      height: 800px;
       position: absolute;
       top: 30px;
       left: 30px;
-      background-color: #FFF;
-      border: 1px solid #CCCCCC;
-      -webkit-box-shadow: 10px 10px 25px #ccc;
-      -moz-box-shadow: 10px 10px 25px #ccc;
-      box-shadow: 10px 10px 25px #ccc;
+      cursor: move;
     }
-
-    #coor {
+    #point {
       width: 10px;
       height: 10px;
       overflow: hidden;
@@ -28,28 +25,74 @@
       bottom: 0;
       background-color: #09C;
     }
-
-    body {
-      background-color: #F3F3F3;
+    .pieCharts {
+      width: 300px;
+      height: 300px;
+      background-color: pink;
     }
   </style>
 </head>
 <body>
 
-<div id="box">
-  <!--<iframe v-drag src="https://sugar.baidubce.com/report/r_1013e-1kzjhwj5-1jq37k/d1c49df8eadf0b96d295408309e5b822"-->
-          <!--style="border:none" width="1000" id="sugar-report"></iframe>-->
-  <div id="coor"></div>
+<div id="drapBox">
+  <div id="pieCharts" class="pieCharts"></div>
+  <div id="point"></div>
 </div>
 
 
-<script>
-  window.addEventListener('message', (e) => {
-    let height = e.data.height;
-    document.getElementById('sugar-report').style.height = height + 'px';
-  })
-</script>
+<!--引用echart插件-->
+<script type="text/javascript" src="../echarts/echarts.js"></script>
+<!--引入拖拽插件-->
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/drag.js"></script>
+
+<script>
+  var options = {
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+      orient: 'vertical',
+      x: 'left',
+      data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+    },
+    series: [
+      {
+        name: '访问来源',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        avoidLabelOverlap: false,
+        label: {
+          normal: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            show: true,
+            textStyle: {
+              fontSize: '30',
+              fontWeight: 'bold'
+            }
+          }
+        },
+        labelLine: {
+          normal: {
+            show: false
+          }
+        },
+        data: [
+          {value: 335, name: '直接访问'},
+          {value: 310, name: '邮件营销'},
+          {value: 234, name: '联盟广告'},
+          {value: 135, name: '视频广告'},
+          {value: 1548, name: '搜索引擎'}
+        ]
+      }
+    ]
+  };
+  let myeacharts = echarts.init(document.getElementById("pieCharts"));
+  myeacharts.setOption(options);
+</script>
 </body>
 </html>
