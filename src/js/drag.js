@@ -1,21 +1,21 @@
 $(function () {
+  //全程监听
   $(document).mousemove(function (e) {
-    console.log(e);
     if (!!this.move) {
-      var posix = !document.move_target ? {'x': 0, 'y': 0} : document.move_target.posix,
-        callback = document.call_down || function () {
-          $(this.move_target).css({
-            'top': e.pageY - posix.y,
-            'left': e.pageX - posix.x
-          });
-        };
-      callback.call(this, e, posix);
+      console.log(this.move,'move');
+      // let posix = !document.move_target ? {'x': 0, 'y': 0} : document.move_target.posix,
+      //   callback = document.call_down || function () {
+      //     $(this.move_target).css({
+      //       'top': e.pageY - posix.y,
+      //       'left': e.pageX - posix.x
+      //     });
+      //   };
+      // callback.call(this, e, posix);
     }
   }).mouseup(function (e) {
+    //鼠标抬起时监听
     if (!!this.move) {
-      var callback = document.call_up || function () {
-      };
-      callback.call(this, e);
+      let callback = document.call_up || function () {};
       $.extend(this, {
         'move': false,
         'move_target': null,
@@ -25,24 +25,26 @@ $(function () {
     }
   });
 
-  var $box = $('#drapBox').mousedown(function (e) {
-    var offset = $(this).offset();
-
+  //在box内按下触发，拖动圆点不触发
+  let $box = $('#drapBox').mousedown(function (e) {
+    let offset = $(this).offset();
     this.posix = {'x': e.pageX - offset.left, 'y': e.pageY - offset.top};
     $.extend(document, {'move': true, 'move_target': this});
   }).on('mousedown', '#point', function (e) {
-    var posix = {
+    //按下圆点那一刻的数据
+    let posix = {
       'w': $box.width(),
       'h': $box.height(),
       'x': e.pageX,
       'y': e.pageY
     };
-
+    //拖动圆点一直触发
     $.extend(document, {
       'move': true, 'call_down': function (e) {
+        //box的宽最小为500
         $box.css({
-          'width': Math.max(30, e.pageX - posix.x + posix.w),
-          'height': Math.max(30, e.pageY - posix.y + posix.h)
+          'width': Math.max(500, e.pageX - posix.x + posix.w),
+          'height': Math.max(500, e.pageY - posix.y + posix.h)
         });
       }
     });
