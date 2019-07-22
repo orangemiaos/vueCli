@@ -4,27 +4,6 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <style type="text/css">
-    #drapBox {
-      width: 500px;
-      height: 500px;
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      cursor: move;
-      background-color: #fff;
-    }
-
-    #point {
-      width: 10px;
-      height: 10px;
-      overflow: hidden;
-      cursor: se-resize;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      background-color: #09C;
-    }
-
     .pieCharts {
       width: 100%;
       height: 100%;
@@ -37,17 +16,17 @@
     }
   </style>
 </head>
-<link rel="stylesheet" href="../echarts/jquery-ui.min.css">
+<link rel="stylesheet" href="../../js/jquery-ui.min.css">
 <body>
 
 <div id="draggable" class="ui-widget-content  resizable">
   <div id="pieCharts" class="pieCharts"></div>
 </div>
 <!--引用echart插件-->
-<script type="text/javascript" src="../echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../../echarts/echarts.min.js"></script>
 <!--引入拖拽插件-->
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../echarts/jquery-ui-1.10.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui-1.10.4.min.js"></script>
 
 <script>
   $(function () {
@@ -99,9 +78,9 @@
     myeacharts.setOption(options);
     $("#draggable").draggable();
     $(".resizable").resizable({
-      stop: function (event, ui) {
-        myeacharts.resize();
-      }
+      // stop: function (event, ui) {
+      //   myeacharts.resize();
+      // }
     });
   });
 
