@@ -7,28 +7,26 @@
       </MenuItem>
     </Menu>
     <div class="box" v-drag style="position: relative;">
-      <iframe src="https://sugar.baidubce.com/report/r_1013e-1kzjhwj5-1jq37k/d1c49df8eadf0b96d295408309e5b822"
-              style="border:none;" width="1000" id="sugar-report" ></iframe>
-      <!--<div class="left">-->
-        <!--<Menu theme="light" @on-select="sideMenuSelect">-->
-          <!--<Submenu :name="item.title" :key="item.path" v-for="item in sideRouterList">-->
-            <!--<template slot="title">-->
-              <!--<Icon type="ios-paper"/>-->
-              <!--{{item.title}}-->
-            <!--</template>-->
-            <!--<MenuItem :name="it.name" :key="it.name" v-for="it in item.children">{{it.title}}</MenuItem>-->
-          <!--</Submenu>-->
-        <!--</Menu>-->
-      <!--</div>-->
-      <!--<div class="right">-->
-        <!--<router-view></router-view>-->
-      <!--</div>-->
+      <div class="left">
+        <Menu theme="light" @on-select="sideMenuSelect">
+          <Submenu :name="item.index" :key="item.index" v-for="item in sideRouterList">
+            <template slot="title">
+              <Icon type="ios-paper"/>
+              {{item.title}}
+            </template>
+            <MenuItem :name="it.name" :key="it.name" v-for="it in item.children">{{it.title}}</MenuItem>
+          </Submenu>
+        </Menu>
+      </div>
+      <div class="right">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import {router} from "@/router/index";
+  import {routes} from "@/router/router.js";
 
   export default {
     name: "index",
@@ -36,20 +34,22 @@
       return {
         activeName: "index",
         topRouterList: [],
+        router: [],
         sideRouterList: [],
       }
     },
     methods: {
       topMenuSelect(val) {
         this.activeName = val;
-        // let route = this.topRouterList.find(e => {
-        //   return e.name == val;
-        // });
-        // if (route) {
-        //   this.sideRouterList = route.children;
-        // } else {
-        //   this.sideRouterList = [];
-        // }
+        let route = routes.filter(e => {
+          return e.index == val;
+        });
+        if (route) {
+          this.sideRouterList = route;
+        } else {
+          this.sideRouterList = [];
+        }
+        console.log(this.sideRouterList, 'this.sideRouterList');
         // //没有实际作用，但是切换top的标签时，路由需要改变
         // this.$router.push({name: val});
       },
@@ -59,12 +59,6 @@
     },
     created() {
       this.topRouterList = this.$store.state;
-      // this.topRouterList = router.options.routes[0].children;
-
-      window.addEventListener('message', function(e){
-        var height = e.data.height;
-        document.getElementById('sugar-report').style.height = height + 'px';
-      })
     }
   }
 

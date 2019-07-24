@@ -4,8 +4,12 @@ const state = [
     index: 1,
   },
   {
-    menuTitle: "游戏",
+    menuTitle: "日记",
     index: 2,
+  },
+  {
+    menuTitle: "游戏",
+    index: 3,
   },
 ];
 

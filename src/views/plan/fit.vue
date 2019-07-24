@@ -1,10 +1,10 @@
 <template>
-  <router-view></router-view>
+    <div>fit</div>
 </template>
 
 <script>
     export default {
-        name: "common"
+        name: "fit"
     }
 </script>
 
