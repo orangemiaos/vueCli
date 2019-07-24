@@ -58,6 +58,7 @@
     },
     created() {
       this.topRouterList = this.$store.state;
+
     }
   }
 
