@@ -9,10 +9,6 @@ import 'iview/dist/styles/iview.css'
 
 Vue.use(iView);
 
-import drag from '@/directive/drag';
-
-import {ContainerMixin, ElementMixin} from 'vue-slicksort';
-
 
 Vue.config.productionTip = false;
 
