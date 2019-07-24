@@ -1,5 +1,5 @@
 <template>
-    <div>snake</div>
+    <div>snake内容</div>
 </template>
 
 <script>

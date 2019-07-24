@@ -1,5 +1,5 @@
 <template>
-    <div>fit</div>
+    <div>fit内容</div>
 </template>
 
 <script>

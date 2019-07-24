@@ -1,6 +1,6 @@
 <template>
     <div>
-      diary
+      diary内容
     </div>
 </template>
 

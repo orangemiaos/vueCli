@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{openName}}
     <Menu mode="horizontal" theme="primary" :active-name="activeName" @on-select="topMenuSelect" accordion>
       <MenuItem :key="item.index" :name="item.index" v-for="item in topRouterList"
                 :class="{active:activeName==item.index}">
@@ -8,7 +9,7 @@
     </Menu>
     <div class="box" style="position: relative;">
       <div class="left">
-        <Menu theme="light" @on-select="sideMenuSelect">
+        <Menu theme="light" @on-select="sideMenuSelect" :open-names="openName">
           <Submenu :name="item.name" :key="item.index" v-for="item in sideRouterList">
             <template slot="title">
               <Icon type="ios-paper"/>
@@ -32,7 +33,8 @@
     name: "index",
     data() {
       return {
-        activeName: "index",
+        activeName: 2,
+        openName: ['dialy'],
         topRouterList: [],
         router: [],
         sideRouterList: [],
@@ -49,8 +51,10 @@
         } else {
           this.sideRouterList = [];
         }
-        // //没有实际作用，但是切换top的标签时，路由需要改变
-        this.$router.push({name: route[0].name});
+        this.openName = [route[0].name];
+        //点击顶部菜单时直接跳转到侧边栏的首个框
+        this.$router.push({name: route[0].children[0].name});
+
       },
       sideMenuSelect(val) {
         this.$router.push({name: val});
@@ -58,7 +62,7 @@
     },
     created() {
       this.topRouterList = this.$store.state;
-
+      this.topMenuSelect(this.activeName);
     }
   }
 
