@@ -1,8 +1,13 @@
 import index from '@import/index';
+//计划
 import fit from '@import/plan/fit';
-import snake from '@import/game/snake';
+import study from '@import/plan/study';
+//目标
+import targetYear from '@import/target/targetYear';
+//日记
 import diary from '@import/diary/diary';
-
+//游戏
+import snake from '@import/game/snake';
 
 export const routes = [
   {
@@ -12,6 +17,13 @@ export const routes = [
     path: '/plan', name: 'plan', index: 1, title: '计划', component: index,
     children: [
       {path: 'fit', name: 'fit', title: '健身计划', component: fit,},
+      {path: 'study', name: 'study', title: '学习计划', component: study,},
+    ]
+  },
+  {
+    path: '/target', name: 'target', index: 1, title: '目标', component: index,
+    children: [
+      {path: 'targetYear', name: 'targetYear', title: '今年目标', component: targetYear,},
     ]
   },
   {
