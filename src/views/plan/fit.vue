@@ -18,7 +18,7 @@ export default {
     clickMe: function () {},
   },
   created: function () {
-     console.log(111);
+     console.log(333);
   },
 };
 </script>
