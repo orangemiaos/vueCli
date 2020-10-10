@@ -1,15 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+// import state from './modules/state'
 
 
 
 Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
-        count: [
-            { key: 1, name: 'a' },
-            { key: 2, name: 'b' },
-        ],
+        count: 0,
         menus: [
             {
                 menuTitle: "计划表",

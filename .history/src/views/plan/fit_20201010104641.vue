@@ -17,11 +17,10 @@ export default {
   methods: {
     clickMe: function () {
       // this.$store.state.count++;
-     
+      // console.log(this.$store.state.count);
       //  this.$store.commit('increment')
       let obj = { key: 3, name: "c" };
       this.$store.state.count.push(obj);
-       console.log(this.$store.state.count);
     },
   },
   created: function () {

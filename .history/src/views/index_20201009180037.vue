@@ -69,7 +69,7 @@
       }
     },
     created() {
-      this.topRouterList = this.$store.state.menus;
+      this.topRouterList = this.$store.state;
 
       if (sessionStorage.getItem('activeName')) {
         this.activeName = sessionStorage.getItem('activeName');
