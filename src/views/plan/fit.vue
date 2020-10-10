@@ -18,7 +18,7 @@ export default {
     clickMe: function () {},
   },
   created: function () {
-    console.log("再次测试下gitee");
+     console.log(111);
   },
 };
 </script>
